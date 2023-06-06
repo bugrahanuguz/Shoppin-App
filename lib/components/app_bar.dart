@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_shopping_app/viewmodel/products_cubit.dart';
 
 import '../constants/constants.dart';
 
@@ -8,11 +10,10 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Center(
-          child: Text(
+      title: Text(
         "Shopping e-Mall",
         style: TextStyle(color: textColor),
-      )),
+      ),
       backgroundColor: backgroundColor,
       actions: <Widget>[
         Padding(
@@ -27,23 +28,28 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                     const IconButton(
                       icon: Icon(
                         Icons.shopping_cart,
-                        color: Color.fromARGB(255, 80, 79, 79),
+                        color: Colors.blueGrey,
                       ),
                       onPressed: null,
                     ),
-                    1 == 0
+                    context.watch<ProductsCubit>().cartList.isEmpty
                         ? Container()
-                        : const Positioned(
+                        : Positioned(
                             child: Stack(
                             children: <Widget>[
                               Icon(Icons.brightness_1,
-                                  size: 20.0, color: Colors.orange),
+                                  size: 20.0,
+                                  color: Color.fromARGB(255, 255, 138, 138)),
                               Positioned(
                                   top: 3.0,
                                   right: 6.0,
                                   child: Center(
                                     child: Text(
-                                      "2",
+                                      context
+                                          .watch<ProductsCubit>()
+                                          .cartList
+                                          .length
+                                          .toString(),
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 11.0,

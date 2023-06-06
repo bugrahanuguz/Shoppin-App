@@ -34,3 +34,7 @@ class LoadingState extends ProductsState {
   final bool isLoading;
   LoadingState(this.isLoading);
 }
+class CartState extends ProductsState {
+  final List<ProductModel?> model;
+  CartState(this.model);
+}

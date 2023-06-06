@@ -7,10 +7,18 @@ import 'package:flutter_shopping_app/viewmodel/products_state.dart';
 class ProductsCubit extends Cubit<ProductsState> {
   final IService service;
   final TabController tabController;
+  List<ProductModel> cartList = [];
+
 
   ProductsCubit(this.tabController, {required this.service})
       : super(ProductsInitial()) {
     getProducts();
+  }
+
+  Object addCartProduct(ProductModel product) {
+    cartList.add(product);
+
+    return cartList;
   }
 
   Future<void> checkTabIndex(

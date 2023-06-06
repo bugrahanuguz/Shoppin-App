@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shopping_app/viewmodel/products_cubit.dart';
 import '../components/app_bar.dart';
 import '../components/product_card.dart';
+import '../constants/constants.dart';
 import '../viewmodel/products_state.dart';
-
 
 class ProductsView extends StatelessWidget {
   final TabController tabController;
   final List<String> categoryList;
-  const ProductsView({super.key, required this.tabController, required this.categoryList});
+  const ProductsView(
+      {super.key, required this.tabController, required this.categoryList});
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +35,11 @@ class ProductsView extends StatelessWidget {
                     physics: const ClampingScrollPhysics(),
                     padding: const EdgeInsets.only(
                         top: 10, left: 10, right: 10, bottom: 10),
-                    unselectedLabelColor: Colors.pink,
-                    indicatorSize: TabBarIndicatorSize.label,
+                    unselectedLabelColor: textColor,
+                    indicatorSize: TabBarIndicatorSize.tab,
                     indicator: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        color: Colors.pinkAccent),
+                        color: Colors.blueGrey),
                     tabs: [
                       buildTab(categoryList[0]),
                       buildTab(categoryList[1]),
@@ -99,8 +100,8 @@ Tab buildTab(String label) {
     child: Container(
       height: 90,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          border: Border.all(color: Colors.pinkAccent, width: 1)),
+        borderRadius: BorderRadius.circular(30),
+      ),
       child: Align(
         alignment: Alignment.center,
         child: Text(label),
