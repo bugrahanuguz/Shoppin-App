@@ -1,6 +1,3 @@
-List<ProductModel> productFromJson(data) =>
-    List<ProductModel>.from(data.map((x) => ProductModel.fromJson(x)));
-
 class ProductModel {
   int? id;
   String? title;

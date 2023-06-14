@@ -1,4 +1,3 @@
-
 import '../model/product_model.dart';
 
 abstract class ProductsState {}
@@ -28,13 +27,4 @@ class MensClothingComplete extends ProductsState {
 class WomensClothingComplete extends ProductsState {
   final List<ProductModel?> model;
   WomensClothingComplete(this.model);
-}
-
-class LoadingState extends ProductsState {
-  final bool isLoading;
-  LoadingState(this.isLoading);
-}
-class CartState extends ProductsState {
-  final List<ProductModel?> model;
-  CartState(this.model);
 }
